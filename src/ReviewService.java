@@ -39,7 +39,7 @@ public class ReviewService {
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
 		ConnectionFactory factory = new ConnectionFactory();
-		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
+		String host = System.getenv("rabbit-mq");
 		factory.setHost(host);
 		Connection connection = null;
 		try {
