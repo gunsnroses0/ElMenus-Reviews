@@ -37,11 +37,13 @@ public class ReviewService {
 		database = mongoClient.getDatabase("El-Menus");
 		// initialize thread pool of fixed size
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-		try {
-			ConnectionFactory factory = new ConnectionFactory();
-			factory.setHost("rabbit-mq");
 
-			Connection connection = factory.newConnection();
+		ConnectionFactory factory = new ConnectionFactory();
+		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
+		factory.setHost(host);
+		Connection connection = null;
+		try {
+			connection = factory.newConnection();
 			final Channel channel = connection.createChannel();
 
 			channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
