@@ -41,7 +41,7 @@ public class ReviewService {
 			ConnectionFactory factory = new ConnectionFactory();
 			factory.setHost("rabbit-mq");
 
-			connection = factory.newConnection();
+			Connection connection = factory.newConnection();
 			final Channel channel = connection.createChannel();
 
 			channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
