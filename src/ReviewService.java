@@ -40,7 +40,7 @@ public class ReviewService {
 
 		ConnectionFactory factory = new ConnectionFactory();
 // 		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
-		factory.setHost("rabbit-mq");
+		factory.setHost("reviews");
 		Connection connection = null;
 		try {
 			connection = factory.newConnection();
