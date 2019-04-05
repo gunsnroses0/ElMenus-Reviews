@@ -38,12 +38,10 @@ public class ReviewService {
 		// initialize thread pool of fixed size
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
-		ConnectionFactory factory = new ConnectionFactory();
-		//String host = System.getenv("rabbit-mq");
-		factory.setHost("rabbit-mq");
-		
-		Connection connection = null;
 		try {
+			factory = new ConnectionFactory();
+			factory.setHost("rabbit-mq");
+
 			connection = factory.newConnection();
 			final Channel channel = connection.createChannel();
 
