@@ -28,8 +28,7 @@ public class Review {
 
 	private static final String COLLECTION_NAME = "reviews";
 
-	static MongoClientURI uri = new MongoClientURI(
-			"mongodb://localhost");
+	static MongoClientURI uri = new MongoClientURI("mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/El-Menus?");
 
 	static MongoClient mongoClient = new MongoClient(uri);
 	static MongoDatabase database = mongoClient.getDatabase("El-Menus");
