@@ -30,11 +30,6 @@ public class ReviewService {
 	public static  MongoDatabase database;
 	public static void main(String[] argv) {
 
-		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost");
-
-		MongoClient mongoClient = new MongoClient(uri);
-		database = mongoClient.getDatabase("El-Menus");
 		// initialize thread pool of fixed size
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
