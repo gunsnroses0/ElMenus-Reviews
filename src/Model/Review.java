@@ -27,7 +27,7 @@ import Commands.Command;
 public class Review {
 
 	private static final String COLLECTION_NAME = "reviews";
-	String host = System.getenv("MONGO_URI");
+	static String host = System.getenv("MONGO_URI");
 	static MongoClientURI uri = new MongoClientURI(host);
 
 	static MongoClient mongoClient = new MongoClient(uri);
