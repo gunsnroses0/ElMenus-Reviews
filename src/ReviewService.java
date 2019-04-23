@@ -37,7 +37,9 @@ public class ReviewService {
 		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
 		String mongo_host = System.getenv("MONGO_URI");
 		System.out.println(host);
-		System.out.println(mongo_host);
+// 		System.out.println(mongo_host);
+		System.out.println("A7KADIOUS");
+		
 		factory.setHost(host);
 		Connection connection = null;
 		try {
