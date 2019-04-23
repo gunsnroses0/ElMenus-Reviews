@@ -52,6 +52,8 @@ public class Review {
 
 
 	public static HashMap<String, Object> get(String messageId) {
+		System.out.println(host);
+
 
 
 		// Retrieving a collection
