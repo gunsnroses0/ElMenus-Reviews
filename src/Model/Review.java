@@ -29,13 +29,13 @@ public class Review {
 	private static final String COLLECTION_NAME = "reviews";
 	static String host = System.getenv("MONGO_URI");
 	static MongoClientURI uri = new MongoClientURI(host);
-
 	static MongoClient mongoClient = new MongoClient(uri);
 	static MongoDatabase database = mongoClient.getDatabase("El-Menus");
 
 	private static MongoCollection<Document> collection = null;
 
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes,String id) {
+		System.out.println(host);
 		// Retrieving a collection
 		MongoCollection<Document> collection = database.getCollection("reviews");
 		Document newReview = new Document();
