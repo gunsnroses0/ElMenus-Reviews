@@ -35,7 +35,9 @@ public class ReviewService {
 
 		ConnectionFactory factory = new ConnectionFactory();
 		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
+		String mongo_host = System.getenv("MONGO_URI");
 		System.out.println(host);
+		System.out.println(mongo_host);
 		factory.setHost(host);
 		Connection connection = null;
 		try {
