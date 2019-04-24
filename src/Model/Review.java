@@ -40,8 +40,7 @@ public class Review {
 		System.out.println(host);
 		
 		try {
-		`	System.out.println("in try");
-			
+			System.out.println("INTRY");
 			MongoClientURI uri = new MongoClientURI(host);
 			MongoClient mongoClient = new MongoClient(uri);
 			MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
