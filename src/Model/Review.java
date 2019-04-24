@@ -25,12 +25,13 @@ import com.mongodb.util.JSON;
 import Commands.Command;
 
 public class Review {
+	
 
 	private static final String COLLECTION_NAME = "reviews";
-	static String host = System.getenv("MONGODB-SERVICE_SERVICE_HOST");
-	static MongoClientURI uri = new MongoClientURI(host);
-	static MongoClient mongoClient = new MongoClient(uri);
-	static MongoDatabase database = mongoClient.getDatabase("El-Menus");
+	static String host = System.getenv("MONGO_URI");
+//	static MongoClientURI uri = new MongoClientURI(host);
+//	static MongoClient mongoClient = new MongoClient(uri);
+//	static MongoDatabase database = mongoClient.getDatabase("El-Menus");
 
 	private static MongoCollection<Document> collection = null;
 
@@ -39,32 +40,35 @@ public class Review {
 		System.out.println(host);
 		
 		try {
-			mongoClient = new MongoClient(uri);
-			database = mongoClient.getDatabase(("El-Menus"));
+			MongoClientURI uri = new MongoClientURI(host);
+			MongoClient mongoClient = new MongoClient(uri);
+			MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
+			// Retrieving a collection
+			MongoCollection<Document> collection = database.getCollection("reviews");
+			Document newReview = new Document();
+
+			for (String key : atrributes.keySet()) {
+				newReview.append(key, atrributes.get(key));
+			}
+
+				newReview.append("target_id", id);
+			collection.insertOne(newReview);
+
 		} catch (Exception e) {
 			System.out.println(host);
 		}
-		// Retrieving a collection
-		MongoCollection<Document> collection = database.getCollection("reviews");
-		Document newReview = new Document();
-
-		for (String key : atrributes.keySet()) {
-			newReview.append(key, atrributes.get(key));
-		}
-
-			newReview.append("target_id", id);
-		collection.insertOne(newReview);
-
 		return atrributes;
+
 	}
 
 
 	public static HashMap<String, Object> get(String messageId) {
-		System.out.println(host);
-
 
 
 		// Retrieving a collection
+		MongoClientURI uri = new MongoClientURI(host);
+		MongoClient mongoClient = new MongoClient(uri);
+		MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
 		MongoCollection<Document> collection = database.getCollection("reviews");
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", new ObjectId(messageId));
