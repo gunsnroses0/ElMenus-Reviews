@@ -35,7 +35,15 @@ public class Review {
 	private static MongoCollection<Document> collection = null;
 
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes,String id) {
+		System.out.println("inside create --> mongo host down");
 		System.out.println(host);
+		
+		try {
+			mongoClient = new MongoClient(uri);
+			database = mongoClient.getDatabase(("El-Menus");
+		} catch (Exception e) {
+			System.out.println(host);
+		}
 		// Retrieving a collection
 		MongoCollection<Document> collection = database.getCollection("reviews");
 		Document newReview = new Document();
