@@ -40,7 +40,7 @@ public class Review {
 		
 		try {
 			mongoClient = new MongoClient(uri);
-			database = mongoClient.getDatabase(("El-Menus");
+			database = mongoClient.getDatabase(("El-Menus"));
 		} catch (Exception e) {
 			System.out.println(host);
 		}
