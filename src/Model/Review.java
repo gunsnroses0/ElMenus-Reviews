@@ -29,8 +29,8 @@ public class Review {
 	
 	private static int DbPoolCount = 4 ; 
 	private static final String COLLECTION_NAME = "reviews";
-//	static String host = System.getenv("MONGO_URI");
-	static String host = "mongodb://localhost";
+	static String host = System.getenv("MONGO_URI");
+	// static String host = "mongodb://localhost";
 	static JSONParser parser = new JSONParser();
 //	static MongoClientURI uri = new MongoClientURI(host);
 //	static MongoClient mongoClient = new MongoClient(uri);
