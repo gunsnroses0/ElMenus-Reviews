@@ -1,8 +1,7 @@
-POST,/like/id,CreateLike
-GET,/like/id,RetreiveLike
-GET,/like,RetrieveLikes
-POST,/like/addCommand/,AddCommand
-POST,/like/deleteCommand/,DeleteCommand
-GET,/like/freeze/,FreezeQueue
-GET,/like/resume/,ResumeQueue
-POST,/like,Test
+POST,/review/id,PostReview
+GET,/review/id,GetReview
+POST,/review/addCommand/,AddCommand
+POST,/review/deleteCommand/,DeleteCommand
+GET,/review/freeze/,FreezeQueue
+GET,/review/resume/,ResumeQueue
+POST,/review,Test
