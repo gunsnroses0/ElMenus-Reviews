@@ -35,6 +35,13 @@ public class ReviewService {
 	private static String RPC_QUEUE_NAME = "review-request";
 	public static  MongoDatabase database;
 	public static HashMap<String, String> config;
+	static int threadPoolCount=4;
+	public static int getThreadPoolCount() {
+		return threadPoolCount;
+	}
+	public static void setThreadPoolCount(int threadPoolCount) {
+		ReviewService.threadPoolCount = threadPoolCount;
+	}
 	public static void main(String[] argv) {
 		run();
 	}

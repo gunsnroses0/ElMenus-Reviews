@@ -17,6 +17,7 @@ import org.bson.types.ObjectId;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -26,7 +27,7 @@ import Commands.Command;
 
 public class Review {
 	
-
+	private static int DbPoolCount = 4 ; 
 	private static final String COLLECTION_NAME = "reviews";
 	static String host = System.getenv("MONGO_URI");
 //	static MongoClientURI uri = new MongoClientURI(host);
@@ -41,7 +42,9 @@ public class Review {
 		
 		try {
 			System.out.println("INTRY");
-			MongoClientURI uri = new MongoClientURI(host);
+			MongoClientOptions.Builder options = MongoClientOptions.builder()
+                    .connectionsPerHost(DbPoolCount);
+			MongoClientURI uri = new MongoClientURI(host , options);
 			MongoClient mongoClient = new MongoClient(uri);
 			MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
 			// Retrieving a collection
@@ -60,6 +63,16 @@ public class Review {
 		}
 		return atrributes;
 
+	}
+
+
+	public static int getDbPoolCount() {
+		return DbPoolCount;
+	}
+
+
+	public static void setDbPoolCount(int dbPoolCount) {
+		DbPoolCount = dbPoolCount;
 	}
 
 
