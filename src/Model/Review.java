@@ -80,7 +80,9 @@ public class Review {
 
 
 		// Retrieving a collection
-		MongoClientURI uri = new MongoClientURI(host);
+		MongoClientOptions.Builder options = MongoClientOptions.builder()
+                .connectionsPerHost(DbPoolCount);
+		MongoClientURI uri = new MongoClientURI(host , options);
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
 		MongoCollection<Document> collection = database.getCollection("reviews");
