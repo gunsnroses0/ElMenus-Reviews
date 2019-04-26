@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
+import Service.ServiceController;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONObject;
@@ -44,6 +45,7 @@ public class ReviewService {
 	}
 	public static void main(String[] argv) {
 		run();
+		ServiceController.run();
 	}
 	public static void run() {
 		try {
