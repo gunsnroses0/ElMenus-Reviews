@@ -33,7 +33,7 @@ public class ResumeQueue extends Command {
 			System.out.println(ReviewService.getRPC_QUEUE_NAME());
 			connection = factory.newConnection();
 			channel = connection.createChannel();
-			channel.queueDeclare("like-request",false,false,false,null);
+			channel.queueDeclare("review-request",false,false,false,null);
 			AMQP.BasicProperties properties = (AMQP.BasicProperties) props.get("properties");
 			AMQP.BasicProperties replyProps = (AMQP.BasicProperties) props.get("replyProps");
 			
