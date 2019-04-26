@@ -56,8 +56,8 @@ public class ReviewService {
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadPoolCount);
 
 		ConnectionFactory factory = new ConnectionFactory();
-		String host = "localhost";
-//		String mongo_host = System.getenv("MONGO_URI");
+		// String host = "localhost";
+		String mongo_host = System.getenv("MONGO_URI");
 		System.out.println(host);
 		
 		factory.setHost(host);
