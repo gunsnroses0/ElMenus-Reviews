@@ -1,0 +1,8 @@
+POST,/like/id,CreateLike
+GET,/like/id,RetreiveLike
+GET,/like,RetrieveLikes
+POST,/like/addCommand/,AddCommand
+POST,/like/deleteCommand/,DeleteCommand
+GET,/like/freeze/,FreezeQueue
+GET,/like/resume/,ResumeQueue
+POST,/like,Test
