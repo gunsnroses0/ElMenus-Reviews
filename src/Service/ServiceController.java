@@ -32,7 +32,7 @@ import Commands.Command;
 
 public abstract class ServiceController {
 
-	private static final String RPC_QUEUE_NAME = "like-controller";
+	private static final String RPC_QUEUE_NAME = "review-controller";
 	public static  MongoDatabase database;
 	public static HashMap<String, String> config;
 	
