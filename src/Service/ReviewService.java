@@ -58,9 +58,9 @@ public class ReviewService {
 		ConnectionFactory factory = new ConnectionFactory();
 		// String host = "localhost";
 		String mongo_host = System.getenv("MONGO_URI");
-		System.out.println(host);
+		System.out.println(mongo_host);
 		
-		factory.setHost(host);
+		factory.setHost(mongo_host);
 		Connection connection = null;
 		try {
 			connection = factory.newConnection();
