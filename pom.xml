@@ -22,7 +22,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ReviewService</mainClass>
+                            <mainClass>Service.ReviewService</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
