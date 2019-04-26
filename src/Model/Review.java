@@ -29,7 +29,9 @@ public class Review {
 	
 	private static int DbPoolCount = 4 ; 
 	private static final String COLLECTION_NAME = "reviews";
-	static String host = System.getenv("MONGO_URI");
+//	static String host = System.getenv("MONGO_URI");
+	static String host = "mongodb://localhost";
+	static JSONParser parser = new JSONParser();
 //	static MongoClientURI uri = new MongoClientURI(host);
 //	static MongoClient mongoClient = new MongoClient(uri);
 //	static MongoDatabase database = mongoClient.getDatabase("El-Menus");
@@ -39,7 +41,7 @@ public class Review {
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes,String id) {
 		System.out.println("inside create --> mongo host down");
 		System.out.println(host);
-		
+		HashMap<String, Object> returnValue = new HashMap<String, Object>();
 		try {
 			System.out.println("INTRY");
 			MongoClientOptions.Builder options = MongoClientOptions.builder()
@@ -55,13 +57,14 @@ public class Review {
 				newReview.append(key, atrributes.get(key));
 			}
 
-				newReview.append("target_id", id);
+			newReview.append("target_id", id);
+			System.out.println("NewReview" + newReview.toJson());
 			collection.insertOne(newReview);
-
+			returnValue = Command.jsonToMap((JSONObject) parser.parse(newReview.toJson()));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return atrributes;
+		return returnValue;
 
 	}
 

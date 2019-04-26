@@ -22,7 +22,10 @@ public class PostReview extends Command{
 
         try {
             JSONObject messageBody = (JSONObject) parser.parse((String) props.get("body"));
-            HashMap<String, Object> requestBodyHash  = jsonToMap((JSONObject) messageBody.get("body"));
+            
+            JSONObject form = (JSONObject) messageBody.get("form");
+            System.out.println();
+            HashMap<String, Object> requestBodyHash  = jsonToMap((JSONObject) messageBody.get("form"));
             AMQP.BasicProperties properties = (AMQP.BasicProperties) props.get("properties");
             AMQP.BasicProperties replyProps = (AMQP.BasicProperties) props.get("replyProps");
             Envelope envelope = (Envelope) props.get("envelope");
