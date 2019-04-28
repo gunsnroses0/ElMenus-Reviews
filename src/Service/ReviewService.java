@@ -30,6 +30,7 @@ import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
 import Commands.Command;
+import Model.Review;
 import Commands.*;
 
 public class ReviewService {
@@ -46,6 +47,7 @@ public class ReviewService {
 	public static void main(String[] argv) {
 		run();
 		ServiceController.run();
+		Review.initializeDb();
 	}
 	public static void run() {
 		try {

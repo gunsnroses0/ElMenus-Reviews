@@ -38,16 +38,24 @@ public class Review {
 
 	private static MongoCollection<Document> collection = null;
 
+	static MongoClientOptions.Builder options = null;
+	static MongoClientURI uri = null;
+	static MongoClient mongoClient = null; 
+	
+	public static void initializeDb() {
+		options = MongoClientOptions.builder()
+				.connectionsPerHost(DbPoolCount);
+		uri = new MongoClientURI(
+				host,options);
+		mongoClient = new MongoClient(uri);
+			
+	}
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes,String id) {
 		System.out.println("inside create --> mongo host down");
 		System.out.println(host);
 		HashMap<String, Object> returnValue = new HashMap<String, Object>();
 		try {
 			System.out.println("INTRY");
-			MongoClientOptions.Builder options = MongoClientOptions.builder()
-                    .connectionsPerHost(DbPoolCount);
-			MongoClientURI uri = new MongoClientURI(host , options);
-			MongoClient mongoClient = new MongoClient(uri);
 			MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
 			// Retrieving a collection
 			MongoCollection<Document> collection = database.getCollection("reviews");
@@ -81,12 +89,6 @@ public class Review {
 
 	public static HashMap<String, Object> get(String messageId) {
 
-
-		// Retrieving a collection
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-                .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(host , options);
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase(("El-Menus"));
 		MongoCollection<Document> collection = database.getCollection("reviews");
 		BasicDBObject query = new BasicDBObject();
